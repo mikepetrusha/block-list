@@ -1,8 +1,14 @@
-import { Inter } from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
 import { authControllerGetSessionInfo } from "@/shared/api/generated";
 import { useQuery } from "@tanstack/react-query";
+import { cn } from "@/lib/utils";
+import { Button } from "@/shared/ui/button";
+import { LoadingSpinner } from "@/shared/ui/spinner";
 
-const inter = Inter({ subsets: ["latin"] });
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export function HomePage() {
   const { data } = useQuery({
@@ -12,9 +18,14 @@ export function HomePage() {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      className={cn(
+        "min-h-screen bg-background font-sans antialiased",
+        fontSans.variable,
+      )}
     >
       {data?.email}
+      <Button>Click me</Button>
+      <LoadingSpinner />
     </main>
   );
 }
