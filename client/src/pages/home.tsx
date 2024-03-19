@@ -3,7 +3,6 @@ import { authControllerGetSessionInfo } from "@/shared/api/generated";
 import { useQuery } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
 import { Button } from "@/shared/ui/button";
-import { LoadingSpinner } from "@/shared/ui/spinner";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -25,7 +24,8 @@ export function HomePage() {
     >
       {data?.email}
       <Button>Click me</Button>
-      <LoadingSpinner />
+
+      <Button variant="link">Link</Button>
     </main>
   );
 }
